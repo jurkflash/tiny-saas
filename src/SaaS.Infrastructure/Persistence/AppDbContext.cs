@@ -59,7 +59,7 @@ public sealed class AppDbContext : DbContext
     /// <summary>
     /// Adds a global query filter for the given tenant-owned entity type.
     /// The lambda captures <c>this</c> so EF Core re-evaluates
-    /// <see cref="CurrentTenantGuid"/> for every query.
+    /// <see cref="CurrentTenantId"/> for every query.
     /// </summary>
     private void ConfigureTenantFilter<T>(ModelBuilder modelBuilder) where T : class, ITenantOwned
     {
