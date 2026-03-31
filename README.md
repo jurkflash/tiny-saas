@@ -62,6 +62,11 @@ GET /healthz  →  200 OK (includes Npgsql connectivity check)
   - `X-Tenant-Id` header for local dev
   - JWT claim for production-style flows
 
+## CI
+
+- **Unit tests** run automatically on every push to `main` and on pull requests.
+- **Integration tests** run nightly at 02:00 UTC and can be [triggered manually](../../actions/workflows/ci-integration.yml) via `workflow_dispatch`.
+
 ## Architecture
 ```
 SaaS.Domain          ← pure domain logic, no external dependencies
