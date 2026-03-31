@@ -11,7 +11,19 @@ docker compose up -d
 
 ## Run migrations
 ```bash
-dotnet ef database update --project src/SaaS.Infrastructure --startup-project src/SaaS.Api
+# Install the EF Core CLI tool (one-time)
+dotnet tool install --global dotnet-ef
+
+# Create a new migration (when model changes)
+dotnet ef migrations add <MigrationName> \
+  --project src/SaaS.Infrastructure \
+  --startup-project src/SaaS.Api \
+  --output-dir Persistence/Migrations
+
+# Apply pending migrations to the database
+dotnet ef database update \
+  --project src/SaaS.Infrastructure \
+  --startup-project src/SaaS.Api
 ```
 
 ## Run API
@@ -42,7 +54,7 @@ https://localhost:{port}/swagger
 
 ## Health check
 ```
-GET /healthz  →  200 OK  { "status": "healthy" }
+GET /healthz  →  200 OK (includes Npgsql connectivity check)
 ```
 
 ## Dev auth / tenant selection
