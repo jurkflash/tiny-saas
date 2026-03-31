@@ -10,13 +10,13 @@ namespace SaaS.Infrastructure.Persistence.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
+            // Initial empty migration — entities will be added in subsequent migrations.
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-
+            // Nothing to reverse.
         }
     }
 }
